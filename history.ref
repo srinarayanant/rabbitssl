@@ -1,0 +1,252 @@
+[root@rmq1 ~]# history
+    1  ping google.com
+    2  ifconfig
+    3  show ip
+    4         ip addr
+    5  ping
+    6  ping 10.0.8.254
+    7  ping google.com
+    8  ping 10.0.8.254
+    9  ping 10.158.14.3
+   10  ping 10.158.14.1
+   11  yum install net-tools -y
+   12  ping 10.158.14.3
+   13  vi /etc/sysconfig/network-scripts/ifcfg-ens160 
+   14  vi /etc/sysconfig/network-scripts/ifcfg-ens192 
+   15  service network restart
+   16  ping google.com
+   17  yum install net-tools -y
+   18  ping google.com
+   19  ls /etc/**/*/*ens192
+   20  rm /etc/**/*/*ens192
+   21  service network restart
+   22  ping google.com
+   23  ping 10.0.0.206
+   24  ifconfig
+   25  ping 10.0.8.254
+   26  vi /etc/**/*/if*ens160
+   27  vi /etc/**/*/r*ens160
+   28  service network restart
+   29  ping 10.0.8.254
+   30  ping 10.0.0.254
+   31  ping 10.0.0.206
+   32  ping 10.0.0.206
+   33  vi /etc/sysconfig/network-scripts/route-ens160
+   34  vi /etc/sysconfig/network-scripts/route-ens192
+   35  service network restart
+   36  ping 10.0.0.206
+   37  ping google.com
+   38  ping 10.0.0.206
+   39  ping google.com
+   40  ping 10.0.0.206
+   41   
+   42  yum install ntp ntpdate ntp-doc -y
+   43  yum install nfs-utils nfs-utils-lib -y
+   44  chkconfig firewalld off
+   45  chkconfig ntpd on
+   46  systemctl disable chronyd
+   47  systemctl start ntpd
+   48  systemctl enable ntpd
+   49  ln -sf /usr/share/zoneinfo/UTC /etc/localtime
+   50  timedatectl set-timezone UTC
+   51  systemctl disable firewalld
+   52  systemctl stop firewalld
+   53  timedatectl set-timezone UTC
+   54  systemctl status firewalld
+   55  systemctl status ntpd
+   56  vi /etc/ntp.conf 
+   57  reboot
+   58  ifconfig
+   59  ip route
+   60  nm
+   61  cd /etc/sysconfig/network-scripts/
+   62  ls
+   63  rm ifcfg-ens192 
+   64  ls
+   65  cp ifcfg-ens160 ifcfg-ens160:1
+   66  vim ifcfg-ens160:1
+   67  service network restart
+   68  ip show
+   69  ip help
+   70  ip addr
+   71  ping 10.0.8.101
+   72  shutdown -h now
+   73  ls
+   74  cd /etc/sysconfig/network-scripts/
+   75  rm ifcfg-ens160:1
+   76  vi ifcfg-ens160 
+   77  vi /etc/hostname
+   78  reboot
+   79  ls
+   80  erl
+   81  cd /opt/
+   82  ls
+   83  yum install wget -y
+   84  wget   https://www.rabbitmq.com/releases/erlang/erlang-19.0.4-1.el7.centos.x86_64.rpm
+   85  rpm -ivh erlang-19.0.4-1.el7.centos.x86_64.rpm 
+   86  erl
+   87  ls
+   88  rpm --import https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
+   89  wget http://www.rabbitmq.com/releases/rabbitmq-server/v3.6.9/rabbitmq-server-3.6.9-1.el7.noarch.rpm
+   90  ls
+   91  yum install rabbitmq-server-3.6.9-1.el7.noarch.rpm 
+   92  echo $dir
+   93  ls /etc/
+   94  ls /etc/rabbitmq/
+   95  ls
+   96  \ls
+   97  ls
+   98  exit
+   99  ls
+  100  cd /etc/rabbitmq/
+  101  ls
+  102  wget https://git.eng.vmware.com/gitweb/blobs/solengg/base_repo/cd76128ec6fd923d9872f3e8d5d677a3085bf432/2dfb37cdd48bd4b84d0f76af98bef4c1c7e486e1/1/
+  103  ls
+  104  cat index.html 
+  105  ls
+  106  rm index.html 
+  107  cd /home/
+  108  ls
+  109  git clone ssh://git@git.eng.vmware.com/solengg/base_repo.git base_repo
+  110  yum install git
+  111  git clone ssh://git@git.eng.vmware.com/solengg/base_repo.git base_repo
+  112  ssh-keygetn
+  113  ssh-keygen
+  114  cat  /root/.ssh/id_rsa.pub
+  115  exit
+  116  ssh-add /home/id/id_git
+  117  cd /home/
+  118  git clone ssh://git@git.eng.vmware.com/solengg/base_repo.git base_repo
+  119  ls
+  120  exit
+  121  ssh-add /home/id/id_git
+  122  eval "$(ssh-agent)"
+  123  ssh-agen /bin/sh
+  124  ssh-agent /bin/sh
+  125  cd /home/base_repo/
+  126  ls
+  127  ls rabbit/
+  128  cd rabbit/
+  129  cp *.sh /etc/rabbitmq/
+  130  cp openssl.cnf /etc/rabbitmq/
+  131  cp rabbitmq.config /etc/rabbitmq/
+  132  cd /etc/rabbitmq/
+  133  ls
+  134  vim rabbitmq.config 
+  135  ls
+  136  vim openssl.cnf 
+  137  vim ~/.vimrc
+  138  vim openssl.cnf 
+  139  vim ~/.vimrc
+  140  vim openssl.cnf 
+  141  ls
+  142  vim create.sh 
+  143  ls
+  144  ./create.sh 
+  145  ls
+  146  vim create.sh 
+  147  vim openssl.cnf 
+  148  vim create.sh 
+  149  ./create.sh 
+  150  ls
+  151  ls -lrta
+  152  cat create.sh 
+  153  ls
+  154  ls testca/
+  155  ls testca/private/
+  156  ls -lrta
+  157  ls testca/private/ -lrta
+  158  •chkconfig rabbitmq-server on 
+  159  chkconfig rabbitmq-server on 
+  160  service rabbitmq-server status
+  161  chkconfig rabbitmq-server on
+  162  service rabbitmq-server start
+  163  service rabbitmq-server status
+  164  netstat -an | grep 9041
+  165  netstat -an | grep 9042
+  166  netstat -an | grep rabbit
+  167  ls
+  168  cat rabbitmq.config | grep 90
+  169  cat rabbitmq.config 
+  170  netstat -an | grep 5671
+  171  shutdown -h now
+  172  rabbitmqctl cluster_status
+  173  rabbitmq-plugins enable rabbitmq_management
+  174  rabbitmqctl add_user admin vmware
+  175  rabbitmqctl set_permissions -p / admin ".*" ".*" ".*"
+  176  rabbitmqctl set_user_tags admin administrator
+  177  exit
+  178  ls /opt/
+  179  ls
+  180  history >> /home/hist1.log
+  181  scp /opt/* root@rmq2:/opt/
+  182  ssh root@rmq2
+  183  ls
+  184  service rabbitmq-server status
+  185  rabbitmqctl cluster status
+  186  rabbitmqctl cluster_status
+  187  ssh root@rmq2
+  188  exit
+  189  ping 10.0.0.170
+  190  ping 10.0.0.171
+  191  ping 10.0.0.120
+  192  exit
+  193  ls
+  194  service rabbitmq-server start
+  195  exit
+  196  cat /etc/rabbitmq/rabbitmq.config 
+  197  cat /etc/rabbitmq/openssl.cnf 
+  198  exit
+  199  gistory
+  200  history
+  201  exit
+  202  cd /home/
+  203  ls
+  204  ls base_repo/
+  205  ls
+  206  cd base_repo/
+  207  mkdir 01_java
+  208  cd 01_java/
+  209  scp root@10.0.0.175:/opt/* .
+  210  ls
+  211  cd ..
+  212  git add 01_java/
+  213  git commit -m cassandra_req
+  214  git push
+  215  git pull
+  216  ls
+  217  git push
+  218  exit
+  219  erl
+  220  service rabbitmq-server status
+  221  rabbitmqctl set_policy ha-all "" '{"ha-mode":"all","ha-sync-mode":"automatic"}'
+  222  reboot
+  223  rabbitmqctl list_policies
+  224  exit
+  225  rabbitmqctl cluster_status
+  226  service rabbitmq-server stop
+  227  service rabbitmq-server start
+  228  service rabbitmq-server status
+  229  exit
+  230  history | grep rpm
+  231  service rabbitmq-server status
+  232  ifconfig
+  233  nslookup rmq1
+  234  yum install bind-utils
+  235  nslookup rmq1
+  236  exit
+  237  ls
+  238  rabbitmqctl add_user admin2 vmware
+  239  rabbitmqctl set_permissions -p / admin ".*" ".*" ".*"
+  240  rabbitmqctl set_permissions -p / admin2 ".*" ".*" ".*"
+  241  rabbitmqctl set_user_tags admin2 administrator
+  242  exit
+  243  rabbitmqctl change_password admin vmware_new
+  244  exit
+  245  ls
+  246  history | grep rabbitmq_ctl
+  247  history | grep rabbitmqctl
+  248   rabbitmqctl cluster_status
+  249  nslookup wdc4-vcav101-rmq.com
+  250  history
+[root@rmq1 ~]# 
