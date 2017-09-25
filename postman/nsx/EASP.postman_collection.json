@@ -1,0 +1,1658 @@
+{
+	"variables": [],
+	"info": {
+		"name": "EASP",
+		"_postman_id": "2faa1fba-7be1-4c11-e0c7-fc7f92ba603e",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "NSX",
+			"description": "",
+			"item": [
+				{
+					"name": "00_ALLEGESget",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://localhost:5443/api/4.0/edges",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<edge>\n<datacenterMoid>{VAR_MDC}</datacenterMoid>\n<name>RBT_EDGE_0</name> <!-- optional. Default is vShield-<edgeId>\n. Used as a vm name on VC appended by \"-<haIndex>\" --> \n<tenant>RBT_EDGE</tenant> <!-- optional. Will \nbe used in syslog messages --> \n<fqdn>rabbitmq-lb-0.easpnet.inc</fqdn> <!-- optional. Default is vShield-<edgeId>\n. Used to set hostanme on the vm. Appended by \"-<haIndex>\" -->\n<vseLogLevel>info</vseLogLevel> \n<appliances>\n<applianceSize>compact</applianceSize> <!-- \noptional. Default is compact. Other possibl\ne values are large|xlarge|quadlarge -->\n <appliance>\n  <resourcePoolId>{{VAR_MCLU}}</resourcePoolId> \n <datastoreId>{{VAR_MDATA_STORE}}</datastoreId>\n </appliance> \n</appliances> \n<vnics> <!-- mamimum 10 interfaces index:0-9 \ncan be configured. Until one \nconnected vnic is configured\n, none of the configured \nfeatures will serve the network -->\n <vnic>\n <index>0</index>\n <name>LB_NIC</name> \n<!-- optional. Sy\nstem has default Names. format vNic0 ... vNic7 -->\n <type>internal</type> <!-- optiona\nl. Default is internal. Other \npossible value is \"uplink\" -->\n <portgroupId>network-18</portgroupId> \n <addressGroups>\n <addressGroup> <!-- Vnic can be configured to\n have more than one addressGroup/subnets -->\n <primaryAddress>10.0.0.120</primaryAddress> <!-- This is mandatory for an addressGroup -->\n <secondaryAddresses> <!-- Optional. Should be used to add/defined other IPs used for NAT, LB, VPN, etc -->\n <ipAddress>10.0.0.170</ipAddress>\n</secondaryAddresses>\n <subnetMask>255.255.255.0</subnetMask> \n \n\n </addressGroup>\n  </addressGroups>\n <isConnected>true</isConnected> <!-- optional. Default is false -->\n </vnic> \n</vnics>\n<cliSettings> \n <userName>admin</userName> \n <password>Supernova1!Supernova1!</password> \n <remoteAccess>true</remoteAccess>\n</cliSettings>\n<autoConfiguration> <!-- optional -->\n <enabled>true</enabled>\n </autoConfiguration>\n  <dnsClient>  \n    <primaryDns>10.158.14.1</primaryDns>\n    \n    <domainName>easpnet.inc</domainName>\n    \n  </dnsClient>\n  \n</edge>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "00_ALLEGESget_NAVISITE",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://localhost:7443/api/4.0/edges/edge-4",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46TlNSMGNrczEh",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<edge>\n<datacenterMoid>{VAR_MDC}</datacenterMoid>\n<name>RBT_EDGE_0</name> <!-- optional. Default is vShield-<edgeId>\n. Used as a vm name on VC appended by \"-<haIndex>\" --> \n<tenant>RBT_EDGE</tenant> <!-- optional. Will \nbe used in syslog messages --> \n<fqdn>rabbitmq-lb-0.easpnet.inc</fqdn> <!-- optional. Default is vShield-<edgeId>\n. Used to set hostanme on the vm. Appended by \"-<haIndex>\" -->\n<vseLogLevel>info</vseLogLevel> \n<appliances>\n<applianceSize>compact</applianceSize> <!-- \noptional. Default is compact. Other possibl\ne values are large|xlarge|quadlarge -->\n <appliance>\n  <resourcePoolId>{{VAR_MCLU}}</resourcePoolId> \n <datastoreId>{{VAR_MDATA_STORE}}</datastoreId>\n </appliance> \n</appliances> \n<vnics> <!-- mamimum 10 interfaces index:0-9 \ncan be configured. Until one \nconnected vnic is configured\n, none of the configured \nfeatures will serve the network -->\n <vnic>\n <index>0</index>\n <name>LB_NIC</name> \n<!-- optional. Sy\nstem has default Names. format vNic0 ... vNic7 -->\n <type>internal</type> <!-- optiona\nl. Default is internal. Other \npossible value is \"uplink\" -->\n <portgroupId>network-18</portgroupId> \n <addressGroups>\n <addressGroup> <!-- Vnic can be configured to\n have more than one addressGroup/subnets -->\n <primaryAddress>10.0.0.120</primaryAddress> <!-- This is mandatory for an addressGroup -->\n <secondaryAddresses> <!-- Optional. Should be used to add/defined other IPs used for NAT, LB, VPN, etc -->\n <ipAddress>10.0.0.170</ipAddress>\n</secondaryAddresses>\n <subnetMask>255.255.255.0</subnetMask> \n \n\n </addressGroup>\n  </addressGroups>\n <isConnected>true</isConnected> <!-- optional. Default is false -->\n </vnic> \n</vnics>\n<cliSettings> \n <userName>admin</userName> \n <password>Supernova1!Supernova1!</password> \n <remoteAccess>true</remoteAccess>\n</cliSettings>\n<autoConfiguration> <!-- optional -->\n <enabled>true</enabled>\n </autoConfiguration>\n  <dnsClient>  \n    <primaryDns>10.158.14.1</primaryDns>\n    \n    <domainName>easpnet.inc</domainName>\n    \n  </dnsClient>\n  \n</edge>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "01_Rabbit Edge",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://localhost:5443/api/4.0/edges/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<edge>\n<datacenterMoid>{{VAR_MDC}}</datacenterMoid>\n<name>RBT_EDGE_0</name> <!-- optional. Default is vShield-<edgeId>\n. Used as a vm name on VC appended by \"-<haIndex>\" --> \n<tenant>RBT_EDGE</tenant> <!-- optional. Will \nbe used in syslog messages --> \n<fqdn>rabbitmq-lb-0.easpnet.inc</fqdn> <!-- optional. Default is vShield-<edgeId>\n. Used to set hostanme on the vm. Appended by \"-<haIndex>\" -->\n<vseLogLevel>info</vseLogLevel> \n<appliances>\n<applianceSize>compact</applianceSize> <!-- \noptional. Default is compact. Other possibl\ne values are large|xlarge|quadlarge -->\n <appliance>\n  <resourcePoolId>{{VAR_MCLU}}</resourcePoolId> \n <datastoreId>{{VAR_MDATA_STORE}}</datastoreId>\n </appliance> \n</appliances> \n<vnics> <!-- mamimum 10 interfaces index:0-9 \ncan be configured. Until one \nconnected vnic is configured\n, none of the configured \nfeatures will serve the network -->\n <vnic>\n <index>0</index>\n <name>LB_NIC</name> \n<!-- optional. Sy\nstem has default Names. format vNic0 ... vNic7 -->\n <type>internal</type> <!-- optiona\nl. Default is internal. Other \npossible value is \"uplink\" -->\n <portgroupId>network-18</portgroupId> \n <addressGroups>\n <addressGroup> <!-- Vnic can be configured to\n have more than one addressGroup/subnets -->\n <primaryAddress>10.0.0.120</primaryAddress> <!-- This is mandatory for an addressGroup -->\n <secondaryAddresses> <!-- Optional. Should be used to add/defined other IPs used for NAT, LB, VPN, etc -->\n <ipAddress>10.0.0.170</ipAddress>\n</secondaryAddresses>\n <subnetMask>255.255.255.0</subnetMask> \n \n\n </addressGroup>\n  </addressGroups>\n <isConnected>true</isConnected> <!-- optional. Default is false -->\n </vnic> \n</vnics>\n<cliSettings> \n <userName>admin</userName> \n <password>Supernova1!Supernova1!</password> \n <remoteAccess>true</remoteAccess>\n</cliSettings>\n<autoConfiguration> <!-- optional -->\n <enabled>true</enabled>\n </autoConfiguration>\n  <dnsClient>  \n    <primaryDns>10.158.14.1</primaryDns>\n    \n    <domainName>easpnet.inc</domainName>\n    \n  </dnsClient>\n  \n</edge>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "01_rabbit_loadbalancer/config ",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://localhost:5443/api/4.0/edges/edge-7/loadbalancer/config ",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<loadBalancer>\n   <enabled>true</enabled>\n   <enableServiceInsertion>false</enableServiceInsertion>\n   <accelerationEnabled>true</accelerationEnabled>\n   <logging>\n      <enable>true</enable>\n      <logLevel>debug</logLevel>\n      <!-- valid values include: emergency, alert, critical, error, warning, notice, info, debug -->\n   </logging>\n   <virtualServer>\n      <virtualServerId>virtualServer-1</virtualServerId>\n      <name>tcp_transparent_vip</name>\n      <description>tcp virtualServer</description>\n      <enabled>true</enabled>\n      <ipAddress>10.0.0.170</ipAddress>\n      <protocol>tcp</protocol>\n      <port>5671</port>\n      <connectionLimit>0</connectionLimit>\n      <applicationProfileId>applicationProfile-3</applicationProfileId>\n      <defaultPoolId>pool-3</defaultPoolId>\n      <enableServiceInsertion>false</enableServiceInsertion>\n      <accelerationEnabled>false</accelerationEnabled>\n   </virtualServer>\n   <applicationProfile>\n      <applicationProfileId>applicationProfile-3</applicationProfileId>\n      <name>tcp_application_profile</name>\n      <insertXForwardedFor>false</insertXForwardedFor>\n      <sslPassthrough>true</sslPassthrough>\n   </applicationProfile>\n   <pool>\n      <poolId>pool-3</poolId>\n      <name>pool-tcp</name>\n      <description>pool-tcp</description>\n      <transparent>false</transparent>\n      <algorithm>leastconn</algorithm>\n      <monitorId>monitor-3</monitorId>\n      <member>\n         <memberId>member-5</memberId>\n         <ipAddress>10.0.0.171</ipAddress>\n         <weight>1</weight>\n         <name>m5</name>\n         <monitorPort>5671</monitorPort>\n      </member>\n      <member>\n         <memberId>member-6</memberId>\n         <ipAddress>10.0.0.172</ipAddress>\n         <weight>1</weight>\n         \\n\n         <name>m6</name>\n         <monitorPort>5671</monitorPort>\n      </member>\n   </pool>\n   <monitor>\n      <monitorId>monitor-3</monitorId>\n      <type>tcp</type>\n      <interval>5</interval>\n      <timeout>15</timeout>\n      <maxRetries>3</maxRetries>\n      <name>tcp-monitor</name>\n   </monitor>\n</loadBalancer>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "01_Rabbit_frewall/config",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://localhost:5443/api/4.0/edges/edge-7/firewall/config",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<firewall><enabled>false</enabled></firewall>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "02_VCD_EDGE",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://localhost:5443/api/4.0/edges/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<edge>\n<datacenterMoid>{{VAR_MDC}}</datacenterMoid>\n<name>VCD_EDGE_0</name> <!-- optional. Default is vShield-<edgeId>\n. Used as a vm name on VC appended by \"-<haIndex>\" --> \n<tenant>VCD_EDGE</tenant> <!-- optional. Will \nbe used in syslog messages --> \n<fqdn>vcd-lb-0.easpnet.inc</fqdn> <!-- optional. Default is vShield-<edgeId>\n. Used to set hostanme on the vm. Appended by \"-<haIndex>\" -->\n<vseLogLevel>info</vseLogLevel> \n<appliances>\n<applianceSize>compact</applianceSize> <!-- \noptional. Default is compact. Other possibl\ne values are large|xlarge|quadlarge -->\n <appliance>\n  <resourcePoolId>{{VAR_MCLU}}</resourcePoolId> \n <datastoreId>{{VAR_MDATA_STORE}}</datastoreId>\n </appliance> \n</appliances> \n<vnics> <!-- mamimum 10 interfaces index:0-9 \ncan be configured. Until one \nconnected vnic is configured\n, none of the configured \nfeatures will serve the network -->\n <vnic>\n <index>0</index>\n <name>LB_NIC</name> \n<!-- optional. Sy\nstem has default Names. format vNic0 ... vNic7 -->\n <type>internal</type> <!-- optiona\nl. Default is internal. Other \npossible value is \"uplink\" -->\n <portgroupId>network-19</portgroupId> \n <addressGroups>\n <addressGroup> <!-- Vnic can be configured to\n have more than one addressGroup/subnets -->\n <primaryAddress>10.158.13.12</primaryAddress> <!-- This is mandatory for an addressGroup -->\n  <!-- <secondaryAddresses> Optional. Should be used to add/defined other IPs used for NAT, LB, VPN, etc \n <ipAddress>10.0.0.170</ipAddress>\n</secondaryAddresses>-->\n <subnetMask>255.255.252.0</subnetMask> \n \n\n </addressGroup>\n  </addressGroups>\n <isConnected>true</isConnected> <!-- optional. Default is false -->\n </vnic> \n</vnics>\n<cliSettings> \n <userName>admin</userName> \n <password>Supernova1!Supernova1!</password> \n <remoteAccess>true</remoteAccess>\n</cliSettings>\n<autoConfiguration> <!-- optional -->\n <enabled>true</enabled>\n </autoConfiguration>\n  <dnsClient>  \n    <primaryDns>10.158.14.1</primaryDns>\n    \n    <domainName>gwscloud.com</domainName>\n    \n  </dnsClient>\n  \n</edge>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "02_VCD_EDGE_GET",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"var location=jsonData.summaries[0].objectId;",
+									"",
+									"postman.setEnvironmentVariable(\"vcd_edge_id\", location);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://localhost:5443/api/4.0/edges/?tenant=VCD_EDGE",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<edge>\n<datacenterMoid>{{VAR_MDC}}</datacenterMoid>\n<name>CP_EDGE_0</name> <!-- optional. Default is vShield-<edgeId>\n. Used as a vm name on VC appended by \"-<haIndex>\" --> \n<tenant>CP_EDGE</tenant> <!-- optional. Will \nbe used in syslog messages --> \n<fqdn>cp-lb-0.easpnet.inc</fqdn> <!-- optional. Default is vShield-<edgeId>\n. Used to set hostanme on the vm. Appended by \"-<haIndex>\" -->\n<vseLogLevel>info</vseLogLevel> \n<appliances>\n<applianceSize>compact</applianceSize> <!-- \noptional. Default is compact. Other possibl\ne values are large|xlarge|quadlarge -->\n <appliance>\n  <resourcePoolId>{{VAR_MCLU}}</resourcePoolId> \n <datastoreId>{{VAR_MDATA_STORE}}</datastoreId>\n </appliance> \n</appliances> \n<vnics> <!-- mamimum 10 interfaces index:0-9 \ncan be configured. Until one \nconnected vnic is configured\n, none of the configured \nfeatures will serve the network -->\n <vnic>\n <index>0</index>\n <name>LB_NIC</name> \n<!-- optional. Sy\nstem has default Names. format vNic0 ... vNic7 -->\n <type>internal</type> <!-- optiona\nl. Default is internal. Other \npossible value is \"uplink\" -->\n <portgroupId>network-19</portgroupId> \n <addressGroups>\n <addressGroup> <!-- Vnic can be configured to\n have more than one addressGroup/subnets -->\n <primaryAddress>10.158.13.15</primaryAddress> <!-- This is mandatory for an addressGroup -->\n  <!-- <secondaryAddresses> Optional. Should be used to add/defined other IPs used for NAT, LB, VPN, etc \n <ipAddress>10.0.0.170</ipAddress>\n</secondaryAddresses>-->\n <subnetMask>255.255.252.0</subnetMask> \n \n\n </addressGroup>\n  </addressGroups>\n <isConnected>true</isConnected> <!-- optional. Default is false -->\n </vnic> \n</vnics>\n<cliSettings> \n <userName>admin</userName> \n <password>Supernova1!Supernova1!</password> \n <remoteAccess>true</remoteAccess>\n</cliSettings>\n<autoConfiguration> <!-- optional -->\n <enabled>true</enabled>\n </autoConfiguration>\n  <dnsClient>  \n    <primaryDns>10.158.14.1</primaryDns>\n    \n    <domainName>gwscloud.com</domainName>\n    \n  </dnsClient>\n  \n</edge>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "02_VCD_SET_SYSLOG",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://{{url}}/api/4.0/edges/{{vcd_edge_id}}/syslog/config\n",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <syslog>\r<protocol>udp</protocol> <!-- Optional. Default is \"udp\". Valid values : tcp|udp --> \r<serverAddresses> <!-- Maximum 2 remote IPs can be configured. -->\r<ipAddress>10.0.0.99</ipAddress>\r\r</serverAddresses>\r</syslog>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "02_VCD_SET routing/config/static",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://{{url}}/api/4.0/edges/{{vcd_edge_id}}/routing/config/static",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<staticRouting>\n    <defaultRoute>\n        <mtu>1500</mtu>\n        <description></description>\n        <gatewayAddress>10.158.15.253</gatewayAddress>\n        <adminDistance>1</adminDistance>\n    </defaultRoute>\n    <staticRoutes>\n        <route>\n            <mtu>1500</mtu>\n            <description></description>\n            <type>user</type>\n            <vnic>0</vnic>\n            <network>10.0.0.0/24</network>\n            <nextHop>10.158.14.3</nextHop>\n            <adminDistance>1</adminDistance>\n        </route>\n        <route>\n            <mtu>1500</mtu>\n            <description></description>\n            <type>user</type>\n            <vnic>0</vnic>\n            <network>10.0.8.0/24</network>\n            <nextHop>10.158.14.3</nextHop>\n            <adminDistance>1</adminDistance>\n        </route>\n    </staticRoutes>\n</staticRouting>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "02_VCD routing/config/static",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://localhost:5443/api/4.0/edges/edge-10/routing/config/static",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "02_VCD_frewall/config",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://{{url}}/api/4.0/edges/{{vcd_edge_id}}/firewall/config",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<firewall><enabled>false</enabled></firewall>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "02_GET vcd_loadbalancer/config ",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://{{url}}/api/4.0/edges/{{vcd_edge_id}}/loadbalancer/config ",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<loadBalancer>\n\t<enabled>true</enabled> <!-- optional, default is true --> \n\t<enableServiceInsertion>false</enableServiceInsertion> <!-- optional, default is false--> \n\t<accelerationEnabled>false</accelerationEnabled> \n\t<logging> \n\t\t\t<enable>true</enable>\n\t\t\t<logLevel>debug</logLevel>\n\t</logging> \n\n\n\n <virtualServer>\n\t\t<virtualServerId>virtualServer-2</virtualServerId> \n\t\t<name>https_vip</name>\n\t\t<description>https virtualServer</description> \n\t\t<enabled>true</enabled> \n\t\t<ipAddress>10.158.13.12</ipAddress> \n\t\t<protocol>https</protocol>\n\n\t\t<port>443</port>\n\t\t<applicationProfileId>applicationProfile-2</applicationProfileId>\n\t\t <defaultPoolId>pool-2</defaultPoolId>\n\t\t  <enableServiceInsertion>false</enableServiceInsertion>\n\t\t   <accelerationEnabled>false</accelerationEnabled>\n\t</virtualServer> \n\t<applicationProfile>\n\t<applicationProfileId>applicationProfile-2</applicationProfileId> \n\t\t<name>https_application_profile</name>\n\t\t <insertXForwardedFor>false</insertXForwardedFor> \n\t\t <sslPassthrough>true</sslPassthrough> <persistence>\n\t      <method>ssl_sessionid</method> \n\t  </persistence>\n\t</applicationProfile>\n\n    <pool>\n\t <poolId>pool-2</poolId> \n\t\t <name>pool-https</name> \n\t\t <description>pool-https</description> \n\t\t <transparent>false</transparent> \n\t\t <algorithm>leastconn</algorithm> \n\n\t\t <monitorId>monitor-3</monitorId> \n\t\t <member>\n\t\t\t<memberId>member-3</memberId>\n\t\t\t\t <ipAddress>10.0.8.2</ipAddress> <weight>1</weight>\n\t\t\t\t <port>443</port>\n\t\t\t\t <name>m3</name>\n\t\t\t</member> \n\t\t<member>\n\t\t\t<memberId>member-4</memberId> \n\t\t\t\t<ipAddress>10.0.8.3</ipAddress> \n\t\t\t\t<weight>1</weight>\n\t\t\t\t<port>443</port> \n\t\t\t\t<name>m4</name>\n\t\t</member> \n\t</pool>\n\t\n\t<monitor>\n    <monitorId>monitor-3</monitorId> \n    <type>tcp</type> <interval>5</interval> <timeout>15</timeout> \n    <maxRetries>3</maxRetries> \n    <name>tcp-monitor</name>\n     </monitor>\n\n</loadBalancer>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "02_vcd_loadbalancer/config ",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://{{url}}/api/4.0/edges/{{vcd_edge_id}}/loadbalancer/config ",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<loadBalancer>\n\t<enabled>true</enabled> <!-- optional, default is true --> \n\t<enableServiceInsertion>false</enableServiceInsertion> <!-- optional, default is false--> \n\t<accelerationEnabled>false</accelerationEnabled> \n\t<logging> \n\t\t\t<enable>true</enable>\n\t\t\t<logLevel>debug</logLevel>\n\t</logging> \n\n\n\n <virtualServer>\n\t\t<virtualServerId>virtualServer-2</virtualServerId> \n\t\t<name>https_vip</name>\n\t\t<description>https virtualServer</description> \n\t\t<enabled>true</enabled> \n\t\t<ipAddress>10.158.13.12</ipAddress> \n\t\t<protocol>https</protocol>\n\n\t\t<port>443</port>\n\t\t<applicationProfileId>applicationProfile-2</applicationProfileId>\n\t\t <defaultPoolId>pool-2</defaultPoolId>\n\t\t  <enableServiceInsertion>false</enableServiceInsertion>\n\t\t   <accelerationEnabled>false</accelerationEnabled>\n\t</virtualServer> \n\t<applicationProfile>\n\t<applicationProfileId>applicationProfile-2</applicationProfileId> \n\t\t<name>https_application_profile</name>\n\t\t <insertXForwardedFor>false</insertXForwardedFor> \n\t\t <sslPassthrough>true</sslPassthrough> <persistence>\n\t      <method>ssl_sessionid</method> \n\t  </persistence>\n\t</applicationProfile>\n\n    <pool>\n\t <poolId>pool-2</poolId> \n\t\t <name>pool-https</name> \n\t\t <description>pool-https</description> \n\t\t <transparent>false</transparent> \n\t\t <algorithm>leastconn</algorithm> \n\n\t\t <monitorId>monitor-3</monitorId> \n\t\t <member>\n\t\t\t<memberId>member-3</memberId>\n\t\t\t\t <ipAddress>10.0.8.2</ipAddress> <weight>1</weight>\n\t\t\t\t <port>443</port>\n\t\t\t\t <name>m3</name>\n\t\t\t</member> \n\t\t<member>\n\t\t\t<memberId>member-4</memberId> \n\t\t\t\t<ipAddress>10.0.8.3</ipAddress> \n\t\t\t\t<weight>1</weight>\n\t\t\t\t<port>443</port> \n\t\t\t\t<name>m4</name>\n\t\t</member> \n\t</pool>\n\t\n\t<monitor>\n    <monitorId>monitor-3</monitorId> \n    <type>tcp</type> <interval>5</interval> <timeout>15</timeout> \n    <maxRetries>3</maxRetries> \n    <name>tcp-monitor</name>\n     </monitor>\n\n</loadBalancer>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "03_CP_EDGE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"cp_edge_location\", postman.getResponseHeader(\"Location\"));",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://localhost:5443/api/4.0/edges/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<edge>\n<datacenterMoid>{{VAR_MDC}}</datacenterMoid>\n<name>CP_EDGE_0</name> <!-- optional. Default is vShield-<edgeId>\n. Used as a vm name on VC appended by \"-<haIndex>\" --> \n<tenant>CP_EDGE</tenant> <!-- optional. Will \nbe used in syslog messages --> \n<fqdn>cp-lb-0.easpnet.inc</fqdn> <!-- optional. Default is vShield-<edgeId>\n. Used to set hostanme on the vm. Appended by \"-<haIndex>\" -->\n<vseLogLevel>info</vseLogLevel> \n<appliances>\n<applianceSize>compact</applianceSize> <!-- \noptional. Default is compact. Other possibl\ne values are large|xlarge|quadlarge -->\n <appliance>\n  <resourcePoolId>{{VAR_MCLU}}</resourcePoolId> \n <datastoreId>{{VAR_MDATA_STORE}}</datastoreId>\n </appliance> \n</appliances> \n<vnics> <!-- mamimum 10 interfaces index:0-9 \ncan be configured. Until one \nconnected vnic is configured\n, none of the configured \nfeatures will serve the network -->\n <vnic>\n <index>0</index>\n <name>LB_NIC</name> \n<!-- optional. Sy\nstem has default Names. format vNic0 ... vNic7 -->\n <type>internal</type> <!-- optiona\nl. Default is internal. Other \npossible value is \"uplink\" -->\n <portgroupId>network-19</portgroupId> \n <addressGroups>\n <addressGroup> <!-- Vnic can be configured to\n have more than one addressGroup/subnets -->\n <primaryAddress>10.158.13.15</primaryAddress> <!-- This is mandatory for an addressGroup -->\n  <!-- <secondaryAddresses> Optional. Should be used to add/defined other IPs used for NAT, LB, VPN, etc \n <ipAddress>10.0.0.170</ipAddress>\n</secondaryAddresses>-->\n <subnetMask>255.255.252.0</subnetMask> \n \n\n </addressGroup>\n  </addressGroups>\n <isConnected>true</isConnected> <!-- optional. Default is false -->\n </vnic> \n</vnics>\n<cliSettings> \n <userName>admin</userName> \n <password>Supernova1!Supernova1!</password> \n <remoteAccess>true</remoteAccess>\n</cliSettings>\n<autoConfiguration> <!-- optional -->\n <enabled>true</enabled>\n </autoConfiguration>\n  <dnsClient>  \n    <primaryDns>10.158.14.1</primaryDns>\n    \n    <domainName>gwscloud.com</domainName>\n    \n  </dnsClient>\n  \n</edge>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "03_CP_EDGE_GET",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"var location=jsonData.summaries[0].objectId;",
+									"",
+									"postman.setEnvironmentVariable(\"cp_edge_id\", location);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://localhost:5443/api/4.0/edges/?tenant=CP_EDGE",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<edge>\n<datacenterMoid>{{VAR_MDC}}</datacenterMoid>\n<name>CP_EDGE_0</name> <!-- optional. Default is vShield-<edgeId>\n. Used as a vm name on VC appended by \"-<haIndex>\" --> \n<tenant>CP_EDGE</tenant> <!-- optional. Will \nbe used in syslog messages --> \n<fqdn>cp-lb-0.easpnet.inc</fqdn> <!-- optional. Default is vShield-<edgeId>\n. Used to set hostanme on the vm. Appended by \"-<haIndex>\" -->\n<vseLogLevel>info</vseLogLevel> \n<appliances>\n<applianceSize>compact</applianceSize> <!-- \noptional. Default is compact. Other possibl\ne values are large|xlarge|quadlarge -->\n <appliance>\n  <resourcePoolId>{{VAR_MCLU}}</resourcePoolId> \n <datastoreId>{{VAR_MDATA_STORE}}</datastoreId>\n </appliance> \n</appliances> \n<vnics> <!-- mamimum 10 interfaces index:0-9 \ncan be configured. Until one \nconnected vnic is configured\n, none of the configured \nfeatures will serve the network -->\n <vnic>\n <index>0</index>\n <name>LB_NIC</name> \n<!-- optional. Sy\nstem has default Names. format vNic0 ... vNic7 -->\n <type>internal</type> <!-- optiona\nl. Default is internal. Other \npossible value is \"uplink\" -->\n <portgroupId>network-19</portgroupId> \n <addressGroups>\n <addressGroup> <!-- Vnic can be configured to\n have more than one addressGroup/subnets -->\n <primaryAddress>10.158.13.15</primaryAddress> <!-- This is mandatory for an addressGroup -->\n  <!-- <secondaryAddresses> Optional. Should be used to add/defined other IPs used for NAT, LB, VPN, etc \n <ipAddress>10.0.0.170</ipAddress>\n</secondaryAddresses>-->\n <subnetMask>255.255.252.0</subnetMask> \n \n\n </addressGroup>\n  </addressGroups>\n <isConnected>true</isConnected> <!-- optional. Default is false -->\n </vnic> \n</vnics>\n<cliSettings> \n <userName>admin</userName> \n <password>Supernova1!Supernova1!</password> \n <remoteAccess>true</remoteAccess>\n</cliSettings>\n<autoConfiguration> <!-- optional -->\n <enabled>true</enabled>\n </autoConfiguration>\n  <dnsClient>  \n    <primaryDns>10.158.14.1</primaryDns>\n    \n    <domainName>gwscloud.com</domainName>\n    \n  </dnsClient>\n  \n</edge>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "03_CP_SET_SYSLOG",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://{{url}}/api/4.0/edges/{{cp_edge_id}}/syslog/config\n",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <syslog>\r<protocol>udp</protocol> <!-- Optional. Default is \"udp\". Valid values : tcp|udp --> \r<serverAddresses> <!-- Maximum 2 remote IPs can be configured. -->\r<ipAddress>10.0.0.99</ipAddress>\r\r</serverAddresses>\r</syslog>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "03_CP_SET routing/config/static",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://{{url}}/api/4.0/edges/{{cp_edge_id}}/routing/config/static",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<staticRouting>\n    <defaultRoute>\n        <mtu>1500</mtu>\n        <description></description>\n        <gatewayAddress>10.158.15.253</gatewayAddress>\n        <adminDistance>1</adminDistance>\n    </defaultRoute>\n    <staticRoutes>\n        <route>\n            <mtu>1500</mtu>\n            <description></description>\n            <type>user</type>\n            <vnic>0</vnic>\n            <network>10.0.0.0/24</network>\n            <nextHop>10.158.14.3</nextHop>\n            <adminDistance>1</adminDistance>\n        </route>\n        <route>\n            <mtu>1500</mtu>\n            <description></description>\n            <type>user</type>\n            <vnic>0</vnic>\n            <network>10.0.8.0/24</network>\n            <nextHop>10.158.14.3</nextHop>\n            <adminDistance>1</adminDistance>\n        </route>\n    </staticRoutes>\n</staticRouting>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "03_CP_frewall/config",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://{{url}}/api/4.0/edges/{{cp_edge_id}}/firewall/config",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<firewall><enabled>false</enabled></firewall>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "03_CP_loadbalancer/config ",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://{{url}}/api/4.0/edges/{{cp_edge_id}}/loadbalancer/config ",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!--PUT https://<vsm-ip>/api/4.0/edges/<edgeId>/loadbalancer/config -->\n<loadBalancer>\n   <enabled>true</enabled>\n   <!-- optional, default is true -->\n   <enableServiceInsertion>false</enableServiceInsertion>\n   <!-- optional, default is false-->\n   <accelerationEnabled>true</accelerationEnabled>\n   <!-- optional, default is false-->\n   <logging>\n      <!-- optional, default is false/INFO -->\n      <enable>true</enable>\n      <logLevel>debug</logLevel>\n      <!-- valid values include: emergency, alert, critical, error, warning, notice, info, debug -->\n   </logging>\n   <virtualServer>\n      <virtualServerId>virtualServer-1</virtualServerId>\n      <name>tcp_31031</name>\n      <description>tcp 31031</description>\n      <enabled>true</enabled>\n      <ipAddress>10.158.13.15</ipAddress>\n      <protocol>tcp</protocol>\n      <port>31031</port>\n      <connectionLimit>0</connectionLimit>\n      <applicationProfileId>applicationProfile-1</applicationProfileId>\n      <defaultPoolId>pool-1</defaultPoolId>\n      <enableServiceInsertion>false</enableServiceInsertion>\n      <accelerationEnabled>false</accelerationEnabled>\n   </virtualServer>\n   <applicationProfile>\n      <applicationProfileId>applicationProfile-1</applicationProfileId>\n      <name>tcp_application_profile</name>\n      <insertXForwardedFor>false</insertXForwardedFor>\n      <sslPassthrough>true</sslPassthrough>\n   </applicationProfile>\n   <pool>\n      <poolId>pool-1</poolId>\n      <name>pool-tcp</name>\n      <description>pool-tcp</description>\n      <transparent>false</transparent>\n      <algorithm>leastconn</algorithm>\n      <monitorId>monitor-1</monitorId>\n      <member>\n         <memberId>member-1</memberId>\n         <ipAddress>10.0.8.16</ipAddress>\n         <weight>1</weight>\n         <name>cp1</name>\n         <monitorPort>31031</monitorPort>\n         <port>31031</port>\n      </member>\n      <member>\n         <memberId>member-2</memberId>\n         <ipAddress>10.0.8.17</ipAddress>\n         <weight>1</weight>\n         <name>cp2</name>\n         <monitorPort>31031</monitorPort>\n         <port>31031</port>\n      </member>\n   </pool>\n   <monitor>\n      <monitorId>monitor-1</monitorId>\n      <type>tcp</type>\n      <interval>5</interval>\n      <timeout>15</timeout>\n      <maxRetries>3</maxRetries>\n      <name>tcp-monitor</name>\n   </monitor>\n   <!-- HTTPS section -->\n   <virtualServer>\n      <virtualServerId>virtualServer-2</virtualServerId>\n      <name>https_vip</name>\n      <description>https virtualServer</description>\n      <enabled>true</enabled>\n      <ipAddress>10.158.13.15</ipAddress>\n      <protocol>https</protocol>\n      <port>443</port>\n      <applicationProfileId>applicationProfile-2</applicationProfileId>\n      <defaultPoolId>pool-2</defaultPoolId>\n      <enableServiceInsertion>false</enableServiceInsertion>\n      <accelerationEnabled>false</accelerationEnabled>\n   </virtualServer>\n   <applicationProfile>\n      <applicationProfileId>applicationProfile-2</applicationProfileId>\n      <name>https_application_profile</name>\n      <insertXForwardedFor>false</insertXForwardedFor>\n      <sslPassthrough>true</sslPassthrough>\n      <persistence>\n         <method>ssl_sessionid</method>\n      </persistence>\n   </applicationProfile>\n   <pool>\n      <poolId>pool-2</poolId>\n      <name>pool-https</name>\n      <description>pool-https</description>\n      <transparent>false</transparent>\n      <algorithm>leastconn</algorithm>\n      <monitorId>monitor-3</monitorId>\n      <member>\n         <memberId>member-3</memberId>\n         <ipAddress>10.0.8.16</ipAddress>\n         <weight>1</weight>\n         <port>443</port>\n         <name>cp1</name>\n         <monitorPort>443</monitorPort>\n      </member>\n      <member>\n         <memberId>member-4</memberId>\n         <ipAddress>10.0.8.17</ipAddress>\n         <weight>1</weight>\n         <port>443</port>\n         <name>cp2</name>\n         <monitorPort>443</monitorPort>\n      </member>\n   </pool>\n   <monitor>\n      <monitorId>monitor-3</monitorId>\n      <type>tcp</type>\n      <interval>5</interval>\n      <timeout>15</timeout>\n      <maxRetries>3</maxRetries>\n      <name>tcp-monitor-443</name>\n   </monitor>\n</loadBalancer>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "03_CP_loadbalancer/config _GET",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://{{url}}/api/4.0/edges/{{cp_edge_id}}/loadbalancer/config ",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!--PUT https://<vsm-ip>/api/4.0/edges/<edgeId>/loadbalancer/config -->\n<loadBalancer>\n   <enabled>true</enabled>\n   <!-- optional, default is true -->\n   <enableServiceInsertion>false</enableServiceInsertion>\n   <!-- optional, default is false-->\n   <accelerationEnabled>true</accelerationEnabled>\n   <!-- optional, default is false-->\n   <logging>\n      <!-- optional, default is false/INFO -->\n      <enable>true</enable>\n      <logLevel>debug</logLevel>\n      <!-- valid values include: emergency, alert, critical, error, warning, notice, info, debug -->\n   </logging>\n   <virtualServer>\n      <virtualServerId>virtualServer-1</virtualServerId>\n      <name>tcp_31031</name>\n      <description>tcp 31031</description>\n      <enabled>true</enabled>\n      <ipAddress>10.158.13.15</ipAddress>\n      <protocol>tcp</protocol>\n      <port>31031</port>\n      <connectionLimit>0</connectionLimit>\n      <applicationProfileId>applicationProfile-1</applicationProfileId>\n      <defaultPoolId>pool-1</defaultPoolId>\n      <enableServiceInsertion>false</enableServiceInsertion>\n      <accelerationEnabled>false</accelerationEnabled>\n   </virtualServer>\n   <applicationProfile>\n      <applicationProfileId>applicationProfile-1</applicationProfileId>\n      <name>tcp_application_profile</name>\n      <insertXForwardedFor>false</insertXForwardedFor>\n      <sslPassthrough>true</sslPassthrough>\n   </applicationProfile>\n   <pool>\n      <poolId>pool-1</poolId>\n      <name>pool-tcp</name>\n      <description>pool-tcp</description>\n      <transparent>false</transparent>\n      <algorithm>leastconn</algorithm>\n      <monitorId>monitor-1</monitorId>\n      <member>\n         <memberId>member-1</memberId>\n         <ipAddress>10.0.8.16</ipAddress>\n         <weight>1</weight>\n         <name>cp1</name>\n         <monitorPort>31031</monitorPort>\n      </member>\n      <member>\n         <memberId>member-2</memberId>\n         <ipAddress>10.0.8.17</ipAddress>\n         <weight>1</weight>\n         <name>cp2</name>\n         <monitorPort>31031</monitorPort>\n      </member>\n   </pool>\n   <monitor>\n      <monitorId>monitor-1</monitorId>\n      <type>tcp</type>\n      <interval>5</interval>\n      <timeout>15</timeout>\n      <maxRetries>3</maxRetries>\n      <name>tcp-monitor</name>\n   </monitor>\n   <!-- HTTPS section -->\n   <virtualServer>\n      <virtualServerId>virtualServer-2</virtualServerId>\n      <name>https_vip</name>\n      <description>https virtualServer</description>\n      <enabled>true</enabled>\n      <ipAddress>10.158.13.15</ipAddress>\n      <protocol>https</protocol>\n      <port>443</port>\n      <applicationProfileId>applicationProfile-2</applicationProfileId>\n      <defaultPoolId>pool-2</defaultPoolId>\n      <enableServiceInsertion>false</enableServiceInsertion>\n      <accelerationEnabled>false</accelerationEnabled>\n   </virtualServer>\n   <applicationProfile>\n      <applicationProfileId>applicationProfile-2</applicationProfileId>\n      <name>https_application_profile</name>\n      <insertXForwardedFor>false</insertXForwardedFor>\n      <sslPassthrough>true</sslPassthrough>\n      <persistence>\n         <method>ssl_sessionid</method>\n      </persistence>\n   </applicationProfile>\n   <pool>\n      <poolId>pool-2</poolId>\n      <name>pool-https</name>\n      <description>pool-https</description>\n      <transparent>false</transparent>\n      <algorithm>leastconn</algorithm>\n      <monitorId>monitor-3</monitorId>\n      <member>\n         <memberId>member-3</memberId>\n         <ipAddress>10.0.8.16</ipAddress>\n         <weight>1</weight>\n         <port>443</port>\n         <name>cp1</name>\n      </member>\n      <member>\n         <memberId>member-4</memberId>\n         <ipAddress>10.0.8.17</ipAddress>\n         <weight>1</weight>\n         <port>443</port>\n         <name>cp2</name>\n      </member>\n   </pool>\n   <monitor>\n      <monitorId>monitor-3</monitorId>\n      <type>tcp</type>\n      <interval>5</interval>\n      <timeout>15</timeout>\n      <maxRetries>3</maxRetries>\n      <name>tcp-monitor-443</name>\n   </monitor>\n</loadBalancer>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "04_CP1_EDGE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://localhost:5443/api/4.0/edges/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<edge>\n<datacenterMoid>{{VAR_MDC}}</datacenterMoid>\n<name>CP1_EDGE_0</name> <!-- optional. Default is vShield-<edgeId>\n. Used as a vm name on VC appended by \"-<haIndex>\" --> \n<tenant>CP1_EDGE</tenant> <!-- optional. Will \nbe used in syslog messages --> \n<fqdn>cp1.easpnet.inc</fqdn> <!-- optional. Default is vShield-<edgeId>\n. Used to set hostanme on the vm. Appended by \"-<haIndex>\" -->\n<vseLogLevel>info</vseLogLevel> \n<appliances>\n<applianceSize>compact</applianceSize> <!-- \noptional. Default is compact. Other possibl\ne values are large|xlarge|quadlarge -->\n <appliance>\n  <resourcePoolId>{{VAR_MCLU}}</resourcePoolId> \n <datastoreId>{{VAR_MDATA_STORE}}</datastoreId>\n </appliance> \n</appliances> \n<vnics> <!-- mamimum 10 interfaces index:0-9 \ncan be configured. Until one \nconnected vnic is configured\n, none of the configured \nfeatures will serve the network -->\n <vnic>\n <index>0</index>\n <name>LB_NIC</name> \n<!-- optional. Sy\nstem has default Names. format vNic0 ... vNic7 -->\n <type>internal</type> <!-- optiona\nl. Default is internal. Other \npossible value is \"uplink\" -->\n <portgroupId>network-19</portgroupId> \n <addressGroups>\n <addressGroup> <!-- Vnic can be configured to\n have more than one addressGroup/subnets -->\n <primaryAddress>10.158.13.16</primaryAddress> <!-- This is mandatory for an addressGroup -->\n  <!-- <secondaryAddresses> Optional. Should be used to add/defined other IPs used for NAT, LB, VPN, etc \n <ipAddress>10.0.0.170</ipAddress>\n</secondaryAddresses>-->\n <subnetMask>255.255.252.0</subnetMask> \n \n\n </addressGroup>\n  </addressGroups>\n <isConnected>true</isConnected> <!-- optional. Default is false -->\n </vnic> \n</vnics>\n<cliSettings> \n <userName>admin</userName> \n <password>Supernova1!Supernova1!</password> \n <remoteAccess>true</remoteAccess>\n</cliSettings>\n<autoConfiguration> <!-- optional -->\n <enabled>true</enabled>\n </autoConfiguration>\n  <dnsClient>  \n    <primaryDns>10.158.14.1</primaryDns>\n    \n    <domainName>gwscloud.com</domainName>\n    \n  </dnsClient>\n  \n</edge>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "04_CP1_EDGE_GET",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"var location=jsonData.summaries[0].objectId;",
+									"",
+									"postman.setEnvironmentVariable(\"cp1_edge_id\", location);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://localhost:5443/api/4.0/edges/?tenant=CP1_EDGE",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<edge>\n<datacenterMoid>{{VAR_MDC}}</datacenterMoid>\n<name>CP_EDGE_0</name> <!-- optional. Default is vShield-<edgeId>\n. Used as a vm name on VC appended by \"-<haIndex>\" --> \n<tenant>CP_EDGE</tenant> <!-- optional. Will \nbe used in syslog messages --> \n<fqdn>cp-lb-0.easpnet.inc</fqdn> <!-- optional. Default is vShield-<edgeId>\n. Used to set hostanme on the vm. Appended by \"-<haIndex>\" -->\n<vseLogLevel>info</vseLogLevel> \n<appliances>\n<applianceSize>compact</applianceSize> <!-- \noptional. Default is compact. Other possibl\ne values are large|xlarge|quadlarge -->\n <appliance>\n  <resourcePoolId>{{VAR_MCLU}}</resourcePoolId> \n <datastoreId>{{VAR_MDATA_STORE}}</datastoreId>\n </appliance> \n</appliances> \n<vnics> <!-- mamimum 10 interfaces index:0-9 \ncan be configured. Until one \nconnected vnic is configured\n, none of the configured \nfeatures will serve the network -->\n <vnic>\n <index>0</index>\n <name>LB_NIC</name> \n<!-- optional. Sy\nstem has default Names. format vNic0 ... vNic7 -->\n <type>internal</type> <!-- optiona\nl. Default is internal. Other \npossible value is \"uplink\" -->\n <portgroupId>network-19</portgroupId> \n <addressGroups>\n <addressGroup> <!-- Vnic can be configured to\n have more than one addressGroup/subnets -->\n <primaryAddress>10.158.13.15</primaryAddress> <!-- This is mandatory for an addressGroup -->\n  <!-- <secondaryAddresses> Optional. Should be used to add/defined other IPs used for NAT, LB, VPN, etc \n <ipAddress>10.0.0.170</ipAddress>\n</secondaryAddresses>-->\n <subnetMask>255.255.252.0</subnetMask> \n \n\n </addressGroup>\n  </addressGroups>\n <isConnected>true</isConnected> <!-- optional. Default is false -->\n </vnic> \n</vnics>\n<cliSettings> \n <userName>admin</userName> \n <password>Supernova1!Supernova1!</password> \n <remoteAccess>true</remoteAccess>\n</cliSettings>\n<autoConfiguration> <!-- optional -->\n <enabled>true</enabled>\n </autoConfiguration>\n  <dnsClient>  \n    <primaryDns>10.158.14.1</primaryDns>\n    \n    <domainName>gwscloud.com</domainName>\n    \n  </dnsClient>\n  \n</edge>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "04_CP1_SET_SYSLOG",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://{{url}}/api/4.0/edges/{{cp1_edge_id}}/syslog/config\n",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <syslog>\r<protocol>udp</protocol> <!-- Optional. Default is \"udp\". Valid values : tcp|udp --> \r<serverAddresses> <!-- Maximum 2 remote IPs can be configured. -->\r<ipAddress>10.0.0.99</ipAddress>\r\r</serverAddresses>\r</syslog>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "04_CP1_SET routing/config/static",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://{{url}}/api/4.0/edges/{{cp1_edge_id}}/routing/config/static",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<staticRouting>\n    <defaultRoute>\n        <mtu>1500</mtu>\n        <description></description>\n        <gatewayAddress>10.158.15.253</gatewayAddress>\n        <adminDistance>1</adminDistance>\n    </defaultRoute>\n    <staticRoutes>\n        <route>\n            <mtu>1500</mtu>\n            <description></description>\n            <type>user</type>\n            <vnic>0</vnic>\n            <network>10.0.0.0/24</network>\n            <nextHop>10.158.14.3</nextHop>\n            <adminDistance>1</adminDistance>\n        </route>\n        <route>\n            <mtu>1500</mtu>\n            <description></description>\n            <type>user</type>\n            <vnic>0</vnic>\n            <network>10.0.8.0/24</network>\n            <nextHop>10.158.14.3</nextHop>\n            <adminDistance>1</adminDistance>\n        </route>\n    </staticRoutes>\n</staticRouting>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "04_CP1_frewall/config",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://{{url}}/api/4.0/edges/{{cp1_edge_id}}/firewall/config",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<firewall><enabled>false</enabled></firewall>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "04_CP1_loadbalancer/config ",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://{{url}}/api/4.0/edges/{{cp1_edge_id}}/loadbalancer/config ",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!--PUT https://<vsm-ip>/api/4.0/edges/<edgeId>/loadbalancer/config -->\n<loadBalancer>\n   <enabled>true</enabled>\n   <!-- optional, default is true -->\n   <enableServiceInsertion>false</enableServiceInsertion>\n   <!-- optional, default is false-->\n   <accelerationEnabled>true</accelerationEnabled>\n   <!-- optional, default is false-->\n   <logging>\n      <!-- optional, default is false/INFO -->\n      <enable>true</enable>\n      <logLevel>debug</logLevel>\n      <!-- valid values include: emergency, alert, critical, error, warning, notice, info, debug -->\n   </logging>\n   \n   <!-- HTTPS section -->\n   <virtualServer>\n      <virtualServerId>virtualServer-2</virtualServerId>\n      <name>https_vip</name>\n      <description>https virtualServer</description>\n      <enabled>true</enabled>\n      <ipAddress>10.158.13.16</ipAddress>\n      <protocol>https</protocol>\n      <port>443</port>\n      <applicationProfileId>applicationProfile-2</applicationProfileId>\n      <defaultPoolId>pool-2</defaultPoolId>\n      <enableServiceInsertion>false</enableServiceInsertion>\n      <accelerationEnabled>false</accelerationEnabled>\n   </virtualServer>\n   <applicationProfile>\n      <applicationProfileId>applicationProfile-2</applicationProfileId>\n      <name>https_application_profile</name>\n      <insertXForwardedFor>false</insertXForwardedFor>\n      <sslPassthrough>true</sslPassthrough>\n      <persistence>\n         <method>ssl_sessionid</method>\n      </persistence>\n   </applicationProfile>\n   <pool>\n      <poolId>pool-2</poolId>\n      <name>pool-https</name>\n      <description>pool-https</description>\n      <transparent>false</transparent>\n      <algorithm>leastconn</algorithm>\n      <monitorId>monitor-3</monitorId>\n      <member>\n         <memberId>member-3</memberId>\n         <ipAddress>10.0.8.16</ipAddress>\n         <weight>1</weight>\n         <port>443</port>\n         <name>cp1</name>\n         <monitorPort>443</monitorPort>\n      </member>\n      \n   </pool>\n   <monitor>\n      <monitorId>monitor-3</monitorId>\n      <type>tcp</type>\n      <interval>5</interval>\n      <timeout>15</timeout>\n      <maxRetries>3</maxRetries>\n      <name>tcp-monitor-443</name>\n   </monitor>\n</loadBalancer>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "04_CP1_loadbalancer/config _GET",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://{{url}}/api/4.0/edges/{{cp1_edge_id}}/loadbalancer/config ",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!--PUT https://<vsm-ip>/api/4.0/edges/<edgeId>/loadbalancer/config -->\n<loadBalancer>\n   <enabled>true</enabled>\n   <!-- optional, default is true -->\n   <enableServiceInsertion>false</enableServiceInsertion>\n   <!-- optional, default is false-->\n   <accelerationEnabled>true</accelerationEnabled>\n   <!-- optional, default is false-->\n   <logging>\n      <!-- optional, default is false/INFO -->\n      <enable>true</enable>\n      <logLevel>debug</logLevel>\n      <!-- valid values include: emergency, alert, critical, error, warning, notice, info, debug -->\n   </logging>\n   <virtualServer>\n      <virtualServerId>virtualServer-1</virtualServerId>\n      <name>tcp_31031</name>\n      <description>tcp 31031</description>\n      <enabled>true</enabled>\n      <ipAddress>10.158.13.15</ipAddress>\n      <protocol>tcp</protocol>\n      <port>31031</port>\n      <connectionLimit>0</connectionLimit>\n      <applicationProfileId>applicationProfile-1</applicationProfileId>\n      <defaultPoolId>pool-1</defaultPoolId>\n      <enableServiceInsertion>false</enableServiceInsertion>\n      <accelerationEnabled>false</accelerationEnabled>\n   </virtualServer>\n   <applicationProfile>\n      <applicationProfileId>applicationProfile-1</applicationProfileId>\n      <name>tcp_application_profile</name>\n      <insertXForwardedFor>false</insertXForwardedFor>\n      <sslPassthrough>true</sslPassthrough>\n   </applicationProfile>\n   <pool>\n      <poolId>pool-1</poolId>\n      <name>pool-tcp</name>\n      <description>pool-tcp</description>\n      <transparent>false</transparent>\n      <algorithm>leastconn</algorithm>\n      <monitorId>monitor-1</monitorId>\n      <member>\n         <memberId>member-1</memberId>\n         <ipAddress>10.0.8.16</ipAddress>\n         <weight>1</weight>\n         <name>cp1</name>\n         <monitorPort>31031</monitorPort>\n      </member>\n      <member>\n         <memberId>member-2</memberId>\n         <ipAddress>10.0.8.17</ipAddress>\n         <weight>1</weight>\n         <name>cp2</name>\n         <monitorPort>31031</monitorPort>\n      </member>\n   </pool>\n   <monitor>\n      <monitorId>monitor-1</monitorId>\n      <type>tcp</type>\n      <interval>5</interval>\n      <timeout>15</timeout>\n      <maxRetries>3</maxRetries>\n      <name>tcp-monitor</name>\n   </monitor>\n   <!-- HTTPS section -->\n   <virtualServer>\n      <virtualServerId>virtualServer-2</virtualServerId>\n      <name>https_vip</name>\n      <description>https virtualServer</description>\n      <enabled>true</enabled>\n      <ipAddress>10.158.13.15</ipAddress>\n      <protocol>https</protocol>\n      <port>443</port>\n      <applicationProfileId>applicationProfile-2</applicationProfileId>\n      <defaultPoolId>pool-2</defaultPoolId>\n      <enableServiceInsertion>false</enableServiceInsertion>\n      <accelerationEnabled>false</accelerationEnabled>\n   </virtualServer>\n   <applicationProfile>\n      <applicationProfileId>applicationProfile-2</applicationProfileId>\n      <name>https_application_profile</name>\n      <insertXForwardedFor>false</insertXForwardedFor>\n      <sslPassthrough>true</sslPassthrough>\n      <persistence>\n         <method>ssl_sessionid</method>\n      </persistence>\n   </applicationProfile>\n   <pool>\n      <poolId>pool-2</poolId>\n      <name>pool-https</name>\n      <description>pool-https</description>\n      <transparent>false</transparent>\n      <algorithm>leastconn</algorithm>\n      <monitorId>monitor-3</monitorId>\n      <member>\n         <memberId>member-3</memberId>\n         <ipAddress>10.0.8.16</ipAddress>\n         <weight>1</weight>\n         <port>443</port>\n         <name>cp1</name>\n      </member>\n      <member>\n         <memberId>member-4</memberId>\n         <ipAddress>10.0.8.17</ipAddress>\n         <weight>1</weight>\n         <port>443</port>\n         <name>cp2</name>\n      </member>\n   </pool>\n   <monitor>\n      <monitorId>monitor-3</monitorId>\n      <type>tcp</type>\n      <interval>5</interval>\n      <timeout>15</timeout>\n      <maxRetries>3</maxRetries>\n      <name>tcp-monitor-443</name>\n   </monitor>\n</loadBalancer>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "05_CP2_EDGE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://localhost:5443/api/4.0/edges/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<edge>\n<datacenterMoid>{{VAR_MDC}}</datacenterMoid>\n<name>CP2_EDGE_0</name> <!-- optional. Default is vShield-<edgeId>\n. Used as a vm name on VC appended by \"-<haIndex>\" --> \n<tenant>CP2_EDGE</tenant> <!-- optional. Will \nbe used in syslog messages --> \n<fqdn>cp2.easpnet.inc</fqdn> <!-- optional. Default is vShield-<edgeId>\n. Used to set hostanme on the vm. Appended by \"-<haIndex>\" -->\n<vseLogLevel>info</vseLogLevel> \n<appliances>\n<applianceSize>compact</applianceSize> <!-- \noptional. Default is compact. Other possibl\ne values are large|xlarge|quadlarge -->\n <appliance>\n  <resourcePoolId>{{VAR_MCLU}}</resourcePoolId> \n <datastoreId>{{VAR_MDATA_STORE}}</datastoreId>\n </appliance> \n</appliances> \n<vnics> <!-- mamimum 10 interfaces index:0-9 \ncan be configured. Until one \nconnected vnic is configured\n, none of the configured \nfeatures will serve the network -->\n <vnic>\n <index>0</index>\n <name>LB_NIC</name> \n<!-- optional. Sy\nstem has default Names. format vNic0 ... vNic7 -->\n <type>internal</type> <!-- optiona\nl. Default is internal. Other \npossible value is \"uplink\" -->\n <portgroupId>network-19</portgroupId> \n <addressGroups>\n <addressGroup> <!-- Vnic can be configured to\n have more than one addressGroup/subnets -->\n <primaryAddress>10.158.13.17</primaryAddress> <!-- This is mandatory for an addressGroup -->\n  <!-- <secondaryAddresses> Optional. Should be used to add/defined other IPs used for NAT, LB, VPN, etc \n <ipAddress>10.0.0.170</ipAddress>\n</secondaryAddresses>-->\n <subnetMask>255.255.252.0</subnetMask> \n \n\n </addressGroup>\n  </addressGroups>\n <isConnected>true</isConnected> <!-- optional. Default is false -->\n </vnic> \n</vnics>\n<cliSettings> \n <userName>admin</userName> \n <password>Supernova1!Supernova1!</password> \n <remoteAccess>true</remoteAccess>\n</cliSettings>\n<autoConfiguration> <!-- optional -->\n <enabled>true</enabled>\n </autoConfiguration>\n  <dnsClient>  \n    <primaryDns>10.158.14.1</primaryDns>\n    \n    <domainName>gwscloud.com</domainName>\n    \n  </dnsClient>\n  \n</edge>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "05_CP2_EDGE_GET",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"var location=jsonData.summaries[0].objectId;",
+									"",
+									"postman.setEnvironmentVariable(\"cp2_edge_id\", location);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://localhost:5443/api/4.0/edges/?tenant=CP2_EDGE",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<edge>\n<datacenterMoid>{{VAR_MDC}}</datacenterMoid>\n<name>CP_EDGE_0</name> <!-- optional. Default is vShield-<edgeId>\n. Used as a vm name on VC appended by \"-<haIndex>\" --> \n<tenant>CP_EDGE</tenant> <!-- optional. Will \nbe used in syslog messages --> \n<fqdn>cp-lb-0.easpnet.inc</fqdn> <!-- optional. Default is vShield-<edgeId>\n. Used to set hostanme on the vm. Appended by \"-<haIndex>\" -->\n<vseLogLevel>info</vseLogLevel> \n<appliances>\n<applianceSize>compact</applianceSize> <!-- \noptional. Default is compact. Other possibl\ne values are large|xlarge|quadlarge -->\n <appliance>\n  <resourcePoolId>{{VAR_MCLU}}</resourcePoolId> \n <datastoreId>{{VAR_MDATA_STORE}}</datastoreId>\n </appliance> \n</appliances> \n<vnics> <!-- mamimum 10 interfaces index:0-9 \ncan be configured. Until one \nconnected vnic is configured\n, none of the configured \nfeatures will serve the network -->\n <vnic>\n <index>0</index>\n <name>LB_NIC</name> \n<!-- optional. Sy\nstem has default Names. format vNic0 ... vNic7 -->\n <type>internal</type> <!-- optiona\nl. Default is internal. Other \npossible value is \"uplink\" -->\n <portgroupId>network-19</portgroupId> \n <addressGroups>\n <addressGroup> <!-- Vnic can be configured to\n have more than one addressGroup/subnets -->\n <primaryAddress>10.158.13.15</primaryAddress> <!-- This is mandatory for an addressGroup -->\n  <!-- <secondaryAddresses> Optional. Should be used to add/defined other IPs used for NAT, LB, VPN, etc \n <ipAddress>10.0.0.170</ipAddress>\n</secondaryAddresses>-->\n <subnetMask>255.255.252.0</subnetMask> \n \n\n </addressGroup>\n  </addressGroups>\n <isConnected>true</isConnected> <!-- optional. Default is false -->\n </vnic> \n</vnics>\n<cliSettings> \n <userName>admin</userName> \n <password>Supernova1!Supernova1!</password> \n <remoteAccess>true</remoteAccess>\n</cliSettings>\n<autoConfiguration> <!-- optional -->\n <enabled>true</enabled>\n </autoConfiguration>\n  <dnsClient>  \n    <primaryDns>10.158.14.1</primaryDns>\n    \n    <domainName>gwscloud.com</domainName>\n    \n  </dnsClient>\n  \n</edge>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "05_CP2_SET_SYSLOG",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://{{url}}/api/4.0/edges/{{cp2_edge_id}}/syslog/config\n",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <syslog>\r<protocol>udp</protocol> <!-- Optional. Default is \"udp\". Valid values : tcp|udp --> \r<serverAddresses> <!-- Maximum 2 remote IPs can be configured. -->\r<ipAddress>10.0.0.99</ipAddress>\r\r</serverAddresses>\r</syslog>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "05_CP2_SET routing/config/static",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://{{url}}/api/4.0/edges/{{cp2_edge_id}}/routing/config/static",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<staticRouting>\n    <defaultRoute>\n        <mtu>1500</mtu>\n        <description></description>\n        <gatewayAddress>10.158.15.253</gatewayAddress>\n        <adminDistance>1</adminDistance>\n    </defaultRoute>\n    <staticRoutes>\n        <route>\n            <mtu>1500</mtu>\n            <description></description>\n            <type>user</type>\n            <vnic>0</vnic>\n            <network>10.0.0.0/24</network>\n            <nextHop>10.158.14.3</nextHop>\n            <adminDistance>1</adminDistance>\n        </route>\n        <route>\n            <mtu>1500</mtu>\n            <description></description>\n            <type>user</type>\n            <vnic>0</vnic>\n            <network>10.0.8.0/24</network>\n            <nextHop>10.158.14.3</nextHop>\n            <adminDistance>1</adminDistance>\n        </route>\n    </staticRoutes>\n</staticRouting>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "05_CP2_frewall/config",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://{{url}}/api/4.0/edges/{{cp2_edge_id}}/firewall/config",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<firewall><enabled>false</enabled></firewall>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "05_CP2_loadbalancer/config ",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://{{url}}/api/4.0/edges/{{cp2_edge_id}}/loadbalancer/config ",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!--PUT https://<vsm-ip>/api/4.0/edges/<edgeId>/loadbalancer/config -->\n<loadBalancer>\n   <enabled>true</enabled>\n   <!-- optional, default is true -->\n   <enableServiceInsertion>false</enableServiceInsertion>\n   <!-- optional, default is false-->\n   <accelerationEnabled>true</accelerationEnabled>\n   <!-- optional, default is false-->\n   <logging>\n      <!-- optional, default is false/INFO -->\n      <enable>true</enable>\n      <logLevel>debug</logLevel>\n      <!-- valid values include: emergency, alert, critical, error, warning, notice, info, debug -->\n   </logging>\n   \n   <!-- HTTPS section -->\n   <virtualServer>\n      <virtualServerId>virtualServer-2</virtualServerId>\n      <name>https_vip</name>\n      <description>https virtualServer</description>\n      <enabled>true</enabled>\n      <ipAddress>10.158.13.17</ipAddress>\n      <protocol>https</protocol>\n      <port>443</port>\n      <applicationProfileId>applicationProfile-2</applicationProfileId>\n      <defaultPoolId>pool-2</defaultPoolId>\n      <enableServiceInsertion>false</enableServiceInsertion>\n      <accelerationEnabled>false</accelerationEnabled>\n   </virtualServer>\n   <applicationProfile>\n      <applicationProfileId>applicationProfile-2</applicationProfileId>\n      <name>https_application_profile</name>\n      <insertXForwardedFor>false</insertXForwardedFor>\n      <sslPassthrough>true</sslPassthrough>\n      <persistence>\n         <method>ssl_sessionid</method>\n      </persistence>\n   </applicationProfile>\n   <pool>\n      <poolId>pool-2</poolId>\n      <name>pool-https</name>\n      <description>pool-https</description>\n      <transparent>false</transparent>\n      <algorithm>leastconn</algorithm>\n      <monitorId>monitor-3</monitorId>\n      <member>\n         <memberId>member-3</memberId>\n         <ipAddress>10.0.8.17</ipAddress>\n         <weight>1</weight>\n         <port>443</port>\n         <name>cp1</name>\n         <monitorPort>443</monitorPort>\n      </member>\n      \n   </pool>\n   <monitor>\n      <monitorId>monitor-3</monitorId>\n      <type>tcp</type>\n      <interval>5</interval>\n      <timeout>15</timeout>\n      <maxRetries>3</maxRetries>\n      <name>tcp-monitor-443</name>\n   </monitor>\n</loadBalancer>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "05_CP2_loadbalancer/config _GET",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://{{url}}/api/4.0/edges/{{cp2_edge_id}}/loadbalancer/config ",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46U3VwZXJub3ZhMSE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!--PUT https://<vsm-ip>/api/4.0/edges/<edgeId>/loadbalancer/config -->\n<loadBalancer>\n   <enabled>true</enabled>\n   <!-- optional, default is true -->\n   <enableServiceInsertion>false</enableServiceInsertion>\n   <!-- optional, default is false-->\n   <accelerationEnabled>true</accelerationEnabled>\n   <!-- optional, default is false-->\n   <logging>\n      <!-- optional, default is false/INFO -->\n      <enable>true</enable>\n      <logLevel>debug</logLevel>\n      <!-- valid values include: emergency, alert, critical, error, warning, notice, info, debug -->\n   </logging>\n   <virtualServer>\n      <virtualServerId>virtualServer-1</virtualServerId>\n      <name>tcp_31031</name>\n      <description>tcp 31031</description>\n      <enabled>true</enabled>\n      <ipAddress>10.158.13.15</ipAddress>\n      <protocol>tcp</protocol>\n      <port>31031</port>\n      <connectionLimit>0</connectionLimit>\n      <applicationProfileId>applicationProfile-1</applicationProfileId>\n      <defaultPoolId>pool-1</defaultPoolId>\n      <enableServiceInsertion>false</enableServiceInsertion>\n      <accelerationEnabled>false</accelerationEnabled>\n   </virtualServer>\n   <applicationProfile>\n      <applicationProfileId>applicationProfile-1</applicationProfileId>\n      <name>tcp_application_profile</name>\n      <insertXForwardedFor>false</insertXForwardedFor>\n      <sslPassthrough>true</sslPassthrough>\n   </applicationProfile>\n   <pool>\n      <poolId>pool-1</poolId>\n      <name>pool-tcp</name>\n      <description>pool-tcp</description>\n      <transparent>false</transparent>\n      <algorithm>leastconn</algorithm>\n      <monitorId>monitor-1</monitorId>\n      <member>\n         <memberId>member-1</memberId>\n         <ipAddress>10.0.8.16</ipAddress>\n         <weight>1</weight>\n         <name>cp1</name>\n         <monitorPort>31031</monitorPort>\n      </member>\n      <member>\n         <memberId>member-2</memberId>\n         <ipAddress>10.0.8.17</ipAddress>\n         <weight>1</weight>\n         <name>cp2</name>\n         <monitorPort>31031</monitorPort>\n      </member>\n   </pool>\n   <monitor>\n      <monitorId>monitor-1</monitorId>\n      <type>tcp</type>\n      <interval>5</interval>\n      <timeout>15</timeout>\n      <maxRetries>3</maxRetries>\n      <name>tcp-monitor</name>\n   </monitor>\n   <!-- HTTPS section -->\n   <virtualServer>\n      <virtualServerId>virtualServer-2</virtualServerId>\n      <name>https_vip</name>\n      <description>https virtualServer</description>\n      <enabled>true</enabled>\n      <ipAddress>10.158.13.15</ipAddress>\n      <protocol>https</protocol>\n      <port>443</port>\n      <applicationProfileId>applicationProfile-2</applicationProfileId>\n      <defaultPoolId>pool-2</defaultPoolId>\n      <enableServiceInsertion>false</enableServiceInsertion>\n      <accelerationEnabled>false</accelerationEnabled>\n   </virtualServer>\n   <applicationProfile>\n      <applicationProfileId>applicationProfile-2</applicationProfileId>\n      <name>https_application_profile</name>\n      <insertXForwardedFor>false</insertXForwardedFor>\n      <sslPassthrough>true</sslPassthrough>\n      <persistence>\n         <method>ssl_sessionid</method>\n      </persistence>\n   </applicationProfile>\n   <pool>\n      <poolId>pool-2</poolId>\n      <name>pool-https</name>\n      <description>pool-https</description>\n      <transparent>false</transparent>\n      <algorithm>leastconn</algorithm>\n      <monitorId>monitor-3</monitorId>\n      <member>\n         <memberId>member-3</memberId>\n         <ipAddress>10.0.8.16</ipAddress>\n         <weight>1</weight>\n         <port>443</port>\n         <name>cp1</name>\n      </member>\n      <member>\n         <memberId>member-4</memberId>\n         <ipAddress>10.0.8.17</ipAddress>\n         <weight>1</weight>\n         <port>443</port>\n         <name>cp2</name>\n      </member>\n   </pool>\n   <monitor>\n      <monitorId>monitor-3</monitorId>\n      <type>tcp</type>\n      <interval>5</interval>\n      <timeout>15</timeout>\n      <maxRetries>3</maxRetries>\n      <name>tcp-monitor-443</name>\n   </monitor>\n</loadBalancer>"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "VCD",
+			"description": "",
+			"item": [
+				{
+					"name": "setting",
+					"request": {
+						"url": "https://localhost:6443/api/admin/hybrid/settings",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/*+xml;version=27.0",
+								"description": ""
+							},
+							{
+								"key": "x-vcloud-authorization",
+								"value": "{{x-vcloud-authorization}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.vmware.vcloud.hybridSettings+xml",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<HybridSettings xmlns=\"http://www.vmware.com/vcloud/v1.5\"> \r\r<CloudProxyBaseUriOverride>wss://draas-cp.gwscloud.com:443/socket/cloudProxy</CloudProxyBaseUriOverride> <CloudProxyFromCloudTunnelHostOverride>draas-cp.gwscloud.com</CloudProxyFromCloudTunnelHostOverride> \r</HybridSettings>"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "https://localhost:6443/api/vr/replications/578e7367-4558-437a-976f-1deaedf05b0d--CGID-446a2f7f-41d2-488a-80b2-de0e2e2e52be",
+					"request": {
+						"url": "https://localhost:6443/api/vr/replications/578e7367-4558-437a-976f-1deaedf05b0d--CGID-446a2f7f-41d2-488a-80b2-de0e2e2e52be",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/*+xml;version=27.0",
+								"description": ""
+							},
+							{
+								"key": "x-vcloud-authorization",
+								"value": "{{x-vcloud-authorization}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "LOGIN SESSION LOGIN",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var auth=postman.getResponseHeader(\"x-vcloud-authorization\");",
+									"console.log(auth);",
+									"postman.setEnvironmentVariable(\"x-vcloud-authorization\", auth);",
+									"postman.setEnvironmentVariable(\"hcsurl\", 'url');",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": " https://hybrid.gwscloud.com:443/api/sessions",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/*;version=27.0",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5pc3RyYXRvckBTWVNURU06IWVBU1BOZXQjMTY4",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET ORG",
+					"request": {
+						"url": "https://hybrid.gwscloud.com/api/org",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/*+xml;version=27.0",
+								"description": ""
+							},
+							{
+								"key": "x-vcloud-authorization",
+								"value": "{{x-vcloud-authorization}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "https://hybrid.gwscloud.com/api/org/53a64641-6af7-4bc9-ab6e-00b340d7f860",
+					"request": {
+						"url": "https://hybrid.gwscloud.com/api/org/53a64641-6af7-4bc9-ab6e-00b340d7f860",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/*+xml;version=27.0",
+								"description": ""
+							},
+							{
+								"key": "x-vcloud-authorization",
+								"value": "{{x-vcloud-authorization}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET ORG ENABLED FOR REP",
+					"request": {
+						"url": "https://hybrid.gwscloud.com/api/org/53a64641-6af7-4bc9-ab6e-00b340d7f860/enabledForReplicationVdcs",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/*+xml;version=27.0",
+								"description": ""
+							},
+							{
+								"key": "x-vcloud-authorization",
+								"value": "{{x-vcloud-authorization}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET VR NODES /api/admin/vr/nodes",
+					"request": {
+						"url": "https://hybrid.gwscloud.com/api/admin/vr/nodes",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/*+xml;version=27.0;vr-version=4.0",
+								"description": ""
+							},
+							{
+								"key": "x-vcloud-authorization",
+								"value": "{{x-vcloud-authorization}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "https://hybrid.gwscloud.com/api/admin/extension/vr/vrs/52d75d34-77ac-4268-37da-b6ff3c97232a",
+					"request": {
+						"url": "https://hybrid.gwscloud.com/api/admin/extension/vr/vrs/52d75d34-77ac-4268-37da-b6ff3c97232a",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/*+xml;version=27.0",
+								"description": ""
+							},
+							{
+								"key": "x-vcloud-authorization",
+								"value": "{{x-vcloud-authorization}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "https://hybrid.gwscloud.com/api/admin/extension/vr/vrs/5201f0e0-cd73-dfb2-ee19-64d1c3efb7fd",
+					"request": {
+						"url": "https://hybrid.gwscloud.com/api/admin/extension/vr/vrs/5201f0e0-cd73-dfb2-ee19-64d1c3efb7fd",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/*+xml;version=27.0",
+								"description": ""
+							},
+							{
+								"key": "x-vcloud-authorization",
+								"value": "{{x-vcloud-authorization}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "https://hybrid.gwscloud.com/api/admin/extension/vr/vrServers",
+					"request": {
+						"url": "https://hybrid.gwscloud.com/api/admin/extension/vr/vrServers",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/*+xml;version=27.0",
+								"description": ""
+							},
+							{
+								"key": "x-vcloud-authorization",
+								"value": "{{x-vcloud-authorization}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "https://hybrid.gwscloud.com/api/admin/extension",
+					"request": {
+						"url": "https://hybrid.gwscloud.com/api/admin/extension",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/*+xml;version=27.0",
+								"description": ""
+							},
+							{
+								"key": "x-vcloud-authorization",
+								"value": "{{x-vcloud-authorization}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "https://hybrid.gwscloud.com/api/admin/extension",
+					"request": {
+						"url": "https://hybrid.gwscloud.com/api/admin/extension",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/*+xml;version=27.0",
+								"description": ""
+							},
+							{
+								"key": "x-vcloud-authorization",
+								"value": "{{x-vcloud-authorization}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CHECK STATUS VRS 2 ",
+					"request": {
+						"url": "https://hybrid.gwscloud.com/api/admin/extension/vr/vrs/5201f0e0-cd73-dfb2-ee19-64d1c3efb7fd",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/*+xml;version=27.0",
+								"description": ""
+							},
+							{
+								"key": "x-vcloud-authorization",
+								"value": "{{x-vcloud-authorization}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "LOGIN SESSION LOGIN copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var auth=postman.getResponseHeader(\"x-vcloud-authorization\");",
+									"console.log(auth);",
+									"postman.setEnvironmentVariable(\"x-vcloud-authorization\", auth);",
+									"postman.setEnvironmentVariable(\"hcsurl\", 'url');",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "{{user}}",
+								"password": "{{pass}}",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": " https://hybrid.gwscloud.com:443/api/sessions",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/*;version=27.0",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5pc3RyYXRvckBTWVNURU06IWVBU1BOZXQjMTY4",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
